@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 import expect from 'expect';
 import $ from 'jQuery';
 import TestUtils from 'react-addons-test-utils';
@@ -14,7 +14,7 @@ describe("AddTodo",() => {
     const todoText = 'Hi there'
     const spy = expect.createSpy();
     const addtodo = TestUtils.renderIntoDocument(<AddTodo onChangeInput={spy}/>);
-    var $el = $(ReactDom.findDOMNode(addtodo));
+    var $el = $(ReactDOM.findDOMNode(addtodo));
 
     addtodo.refs.text.value = todoText;
     TestUtils.Simulate.submit($el.find('form')[0]);
@@ -25,7 +25,7 @@ describe("AddTodo",() => {
     const todoText = ''
     const spy = expect.createSpy();
     const addtodo = TestUtils.renderIntoDocument(<AddTodo onChangeInput={spy}/>);
-    var $el = $(ReactDom.findDOMNode(addtodo));
+    var $el = $(ReactDOM.findDOMNode(addtodo));
 
     addtodo.refs.text.value = todoText;
     TestUtils.Simulate.submit($el.find('form')[0]);

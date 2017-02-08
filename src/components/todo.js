@@ -13,10 +13,12 @@ export default class ToDo extends Component {
       searchText: '',
       todos: [{
       id: uuid(),
-      text: "Do smtng"
+      text: "Do smtng",
+      completed: true
     },{
       id: uuid(),
-      text: "Pew pew"
+      text: "Pew pew",
+      completed: false
     }]};
   }
 
@@ -26,10 +28,21 @@ export default class ToDo extends Component {
         ...this.state.todos,
         {
           id: uuid(),
-          text: text
+          text: text,
+          completed: false
         }
       ]
     });
+  }
+
+  handleToggle(id) {
+    const updatedTodos = this.state.todos.map((todo) => {
+      if(todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+    this.setState({todos: updatedTodos});
   }
 
   handleSearch = (showComplited, searchText) => {
@@ -43,7 +56,7 @@ export default class ToDo extends Component {
     return(
       <div>
         <TodoSearch onSearch={this.handleSearch}/>
-        <ToDoList todos={this.state.todos}/>
+        <ToDoList todos={this.state.todos} onToggle={(id) =>this.handleToggle(id)} />
         <AddTodo onChangeInput={(text) => this.handleAddTodo(text)} />
       </div>
     );

@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const ToDoListItem = ({item}) => {
-  return(
-    <div>
-      {item.id}. {item.text}
-    </div>
-  );
-};
+class ToDoListItem extends Component {
+  render() {
+    const {id, text, completed} = this.props;
+
+    return(
+      <div onClick={() => this.props.onToggle(id)}>
+        <input type='checkbox' checked={completed}/>
+        {text}
+      </div>
+    );
+  }
+}
 
 export default ToDoListItem;
