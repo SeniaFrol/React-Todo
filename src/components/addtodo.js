@@ -7,9 +7,9 @@ export default class AddTodo extends Component {
     if(todotext.length > 0) {
       this.refs.text.value = '';
       this.props.onChangeInput(todotext);
-  } else {
+    } else {
     this.refs.text.focus();
-  }
+    }
   }
 
   render() {
