@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import TodoAPI from '../api/todoapi.js';
+
 import ToDoList from './todolist.js';
 import AddTodo from './addtodo.js';
 import TodoSearch from './todo-search';
@@ -11,15 +13,12 @@ export default class ToDo extends Component {
     this.state = {
       showComplited: false,
       searchText: '',
-      todos: [{
-      id: uuid(),
-      text: "Do smtng",
-      completed: true
-    },{
-      id: uuid(),
-      text: "Pew pew",
-      completed: false
-    }]};
+      todos: TodoAPI.getTodos()
+    };
+  }
+
+  componentDidUpdate() {
+    TodoAPI.setTodos(this.state.todos);
   }
 
   handleAddTodo(text) {
@@ -53,10 +52,13 @@ export default class ToDo extends Component {
   }
 
   render() {
+    const {todos, showComplited, searchText} = this.state;
+    const filterTodos = TodoAPI.filterTodos(todos, showComplited, searchText);
+
     return(
       <div>
         <TodoSearch onSearch={this.handleSearch}/>
-        <ToDoList todos={this.state.todos} onToggle={(id) =>this.handleToggle(id)} />
+        <ToDoList todos={filterTodos} onToggle={(id) =>this.handleToggle(id)} />
         <AddTodo onChangeInput={(text) => this.handleAddTodo(text)} />
       </div>
     );
