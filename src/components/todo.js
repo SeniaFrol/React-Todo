@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ToDoList from './todolist.js';
+import AddTodo from './addtodo.js';
 
 export default class ToDo extends Component {
   constructor(props) {
@@ -13,10 +14,15 @@ export default class ToDo extends Component {
       text: "Pew pew"
     }]};
   }
+
+  handleAddTodo(text) {
+    alert('new todo: ' + text);
+  }
   render() {
     return(
       <div>
         <ToDoList todos={this.state.todos}/>
+        <AddTodo onChangeInput={(text) => this.handleAddTodo(text)} />
       </div>
     );
   }
