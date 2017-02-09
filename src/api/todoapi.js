@@ -27,8 +27,8 @@ export default {
     filterTodos = filterTodos.filter((todo) => {
       return !todo.completed || showCompleted;
     });
-    //Filter by seaarchText
 
+    //Filter by seaarchText
     filterTodos = filterTodos.filter((todo) => {
       let text = todo.text.toLowerCase();
       return (searchText.length === 0 || text.indexOf(searchText) > -1);
