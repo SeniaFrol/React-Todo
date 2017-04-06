@@ -11,12 +11,12 @@ export default class TodoSearch extends Component {
     return(
       <div className="container__header">
         <div>
-          <input type="search" ref="searchText" placeholder="Search ToDo" onChange={(e) => this.handleSearch(e)}/>
+          <input type="search" ref="searchText" placeholder="Search ToDo" onChange={e => this.handleSearch(e)}/>
         </div>
         <div>
           <label>
-            <input type="checkbox" ref="showComplited" onChange={(e) => this.handleSearch(e)} />
-            Show complited todos
+            <input type="checkbox" ref="showComplited" onChange={e => this.handleSearch(e)} />
+            Show completed todos
           </label>
         </div>
       </div>
