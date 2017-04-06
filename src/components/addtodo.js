@@ -15,7 +15,7 @@ export default class AddTodo extends Component {
   render() {
     return(
       <div className="container__footer">
-        <form onSubmit={(e) => this.onInputChange(e)}>
+        <form onSubmit={e => this.onInputChange(e)}>
           <input type='text' ref='text' placeholder='Add new ToDo'/>
           <button className="button expanded">Add ToDo</button>
         </form>
